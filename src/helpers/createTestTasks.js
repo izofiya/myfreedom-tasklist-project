@@ -1,18 +1,13 @@
 const path = require('path');
-const uuid = require('uuid');
-const File = require('../file');
+const { Database } = require('../database');
 
-const file = new File(path.resolve(__dirname, '../../tasks.json'));
-const tasks = {};
+const database = new Database(path.resolve(__dirname, '../../tasks.json'));
 
-for (let index = 0; index < 10; ++index) {
-    const task = {
-        id: uuid(),
-        description: `Task ${index + 1}`,
-        isDone: index % 2 === 0
-    };
-
-    tasks[task.id] = task;
+async function generate() {
+    for (let index = 0; index < 10; ++index) {
+        const description = `Task ${index + 1}`;
+        await database.addTask({description});
+    }
 }
 
-file.write(tasks);
+generate();

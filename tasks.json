@@ -1,52 +1,54 @@
 {
-  "3580b5f8-ac3c-40ef-96b1-771e634c8884": {
-    "id": "3580b5f8-ac3c-40ef-96b1-771e634c8884",
-    "description": "Task 0",
-    "isDone": true
-  },
-  "190409d8-aa7c-4754-bf8b-779d3b97de86": {
-    "id": "190409d8-aa7c-4754-bf8b-779d3b97de86",
-    "description": "Task 1",
-    "isDone": false
-  },
-  "6744f6f1-ddfb-4ae2-941b-5c5124dd6c8a": {
-    "id": "6744f6f1-ddfb-4ae2-941b-5c5124dd6c8a",
-    "description": "Task 2",
-    "isDone": true
-  },
-  "78eb27f8-f58f-4d85-b601-9c8fcdb68f22": {
-    "id": "78eb27f8-f58f-4d85-b601-9c8fcdb68f22",
-    "description": "Task 3",
-    "isDone": false
-  },
-  "7057125e-4d27-4200-a90c-327dd46e1aa2": {
-    "id": "7057125e-4d27-4200-a90c-327dd46e1aa2",
-    "description": "Task 4",
-    "isDone": true
-  },
-  "4093f651-7938-4b42-a2f9-7cd86a56dceb": {
-    "id": "4093f651-7938-4b42-a2f9-7cd86a56dceb",
-    "description": "Task 5",
-    "isDone": false
-  },
-  "769e25f2-6be3-41d9-96e9-0953e466a74d": {
-    "id": "769e25f2-6be3-41d9-96e9-0953e466a74d",
-    "description": "Task 6",
-    "isDone": true
-  },
-  "a137f8f4-58c0-426b-8c24-9f7f887efe04": {
-    "id": "a137f8f4-58c0-426b-8c24-9f7f887efe04",
-    "description": "Task 7",
-    "isDone": false
-  },
-  "219baf0e-0f61-4462-9c7a-3fecd573d8f9": {
-    "id": "219baf0e-0f61-4462-9c7a-3fecd573d8f9",
-    "description": "Task 8",
-    "isDone": true
-  },
-  "4891a06f-44f1-4c62-9ab2-b00d288ad76a": {
-    "id": "4891a06f-44f1-4c62-9ab2-b00d288ad76a",
-    "description": "Task 9",
-    "isDone": false
-  }
+  "tasks": [
+    {
+      "id": "d92f3865-ada0-4881-9ec2-dd1c8a216484",
+      "description": "Task 1",
+      "isDone": false
+    },
+    {
+      "id": "a78cb32c-b2e8-49ca-8032-064eb1713f22",
+      "description": "Task 2",
+      "isDone": false
+    },
+    {
+      "id": "f9672e6d-dd2d-4cc8-8da1-65543fb21e96",
+      "description": "Task 3",
+      "isDone": false
+    },
+    {
+      "id": "34e83991-4b26-4c2e-8de2-fb39c3ebf290",
+      "description": "Task 4",
+      "isDone": false
+    },
+    {
+      "id": "6805fc1a-39e9-4c7f-adf0-1211057a0ff6",
+      "description": "Task 5",
+      "isDone": false
+    },
+    {
+      "id": "cd0a8d08-7b79-45ab-a321-609934ea87be",
+      "description": "Task 6",
+      "isDone": false
+    },
+    {
+      "id": "e2fdf38d-6d4a-4f65-8970-e9780812088d",
+      "description": "Task 7",
+      "isDone": false
+    },
+    {
+      "id": "87da15a1-ffdb-4054-837c-215f19479fb1",
+      "description": "Task 8",
+      "isDone": false
+    },
+    {
+      "id": "515e31e0-dfda-47a0-b7a1-0245cb387b86",
+      "description": "Task 9",
+      "isDone": false
+    },
+    {
+      "id": "354f9807-96a2-4fdb-9f15-75a0ed374d11",
+      "description": "Task 10",
+      "isDone": false
+    }
+  ]
 }

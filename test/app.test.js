@@ -3,33 +3,27 @@ const uuid = require('uuid');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const File = require('../src/file');
+const { Database } = require('../src/database');
 
-const normalize = array => array.reduce((acc, entity) => ({...acc, [entity.id]: entity}), {});
+const normalize = array => array.reduce((acc, entity) => ({ ...acc, [entity.id]: entity }), {});
 
 describe('server integration tests', function () {
-    const tasks = normalize([{
-        id: uuid(),
-        description: 'Some test task',
-        isDone: false
-    }, {
-        id: uuid(),
-        description: 'Some other task',
-        isDone: true
-    }]);
+    let tasks;
 
     process.env.FILE = path.resolve(__dirname, './testtasks.json');
 
     const app = require('../src/app');
 
-    beforeEach(() => {
-        const file = new File(process.env.FILE);
+    beforeEach(async () => {
+        const database = new Database(process.env.FILE);
+        const descriptions = ['Some test task', 'Some other task'];
 
-        file.write(tasks);
+        tasks = await Promise.all(descriptions.map(description => database.addTask({ description })));
+        tasks = normalize(tasks);
     });
 
 
-    afterAll(() => util.promisify(fs.unlink)(process.env.FILE));
+    afterEach(() => util.promisify(fs.unlink)(process.env.FILE));
 
     test('should receive all tasks from file', async () => {
         const res = await supertest(app)

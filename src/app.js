@@ -1,8 +1,7 @@
-const {resolve} = require('path');
+const { resolve } = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const uuid = require('uuid');
-const File = require('./file');
+const { Database } = require('./database');
 
 const app = express();
 const tasksRouter = new express.Router();
@@ -10,20 +9,20 @@ const tasksRouter = new express.Router();
 app.use(express.static('./static'));
 app.use(bodyParser.json());
 
-const file = new File(process.env.FILE || resolve(__dirname, '../tasks.json'));
-
+const filePath = process.env.FILE || resolve(__dirname, '../tasks.json');
 const isNullOrUndefined = value => value === undefined || value === null;
 const isTypeOrNotSupplied = (value, type) => isNullOrUndefined(value) || typeof value === type;
 
 tasksRouter.get('/tasks', async (req, res) => {
-    const tasks = await file.read();
+    const database = new Database(filePath);
+    const tasks = await database.getAllTasks();
 
-    res.json(Object.values(tasks));
+    res.json(tasks);
 });
 
 tasksRouter.get('/tasks/:id', async (req, res) => {
-    const tasks = await file.read();
-    const task = tasks[req.params.id];
+    const database = new Database(filePath);
+    const task = await database.getTaskById(req.params.id);
 
     if (!task) {
         res.status(404);
@@ -36,7 +35,8 @@ tasksRouter.get('/tasks/:id', async (req, res) => {
 });
 
 tasksRouter.post('/tasks', async (req, res) => {
-    const {description} = req.body;
+    const database = new Database(filePath);
+    const { description } = req.body;
 
     if (typeof description !== 'string' || !(description.trim())) {
         res.status(400);
@@ -45,23 +45,14 @@ tasksRouter.post('/tasks', async (req, res) => {
         return;
     }
 
-    const task = {
-        id: uuid(),
-        description: description.trim(),
-        isDone: false
-    };
-
-    const tasks = await file.read();
-
-    tasks[task.id] = task;
-
-    await file.write(tasks);
+    const task = await database.addTask({ description });
 
     res.json(task);
 });
 
 tasksRouter.put('/tasks/:id', async (req, res) => {
-    const {isDone, description} = req.body;
+    const database = new Database(filePath);
+    const { isDone, description } = req.body;
 
     if (!isTypeOrNotSupplied(isDone, 'boolean') || !isTypeOrNotSupplied(description, 'string')) {
         res.status(400);
@@ -69,8 +60,12 @@ tasksRouter.put('/tasks/:id', async (req, res) => {
         return;
     }
 
-    const tasks = await file.read();
-    const task = tasks[req.params.id];
+    const { id } = req.params;
+    const task = await database.updateTask({ 
+        id, 
+        description: description && description.trim(), 
+        isDone 
+    });
 
     if (!task) {
         res.status(404);
@@ -78,22 +73,13 @@ tasksRouter.put('/tasks/:id', async (req, res) => {
         return;
     }
 
-    task.isDone = isNullOrUndefined(isDone) ? task.isDone : isDone;
-    task.description = description ? description.trim() : task.description;
-
-    await file.write(tasks);
-
     res.json(task);
 });
 
 tasksRouter.delete('/tasks/:id', async (req, res) => {
-    const tasks = await file.read();
+    const database = new Database(filePath);
 
-    if (tasks[req.params.id]) {
-        delete tasks[req.params.id];
-    }
-
-    await file.write(tasks);
+    await database.removeTask(req.params.id);
 
     res.status(200);
     res.end();
