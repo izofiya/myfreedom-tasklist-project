@@ -15,35 +15,40 @@ class Database {
         }));
     }
 
-    async getAllTasks() {
+    async getTasksCollection() {
         const db = await this._db;
 
-        return db.get(Collections.TASKS).value();
+        return db.get(Collections.TASKS);
+    }
+
+    async getAllTasks() {
+        const collection = await this.getTasksCollection();
+
+        return collection.value();
     }
 
     async addTask({ description, isDone = false, ...other }) {
         const id = uuid();
         description = description.trim();
 
-        const db = await this._db;
+        const collection = await this.getTasksCollection();
 
-        await db.get(Collections.TASKS)
-            .push({ id, description, isDone, ...other })
+        await collection.push({ id, description, isDone, ...other })
             .write();
 
         return this.getTaskById(id);
     }
 
     async getTaskById(id) {
-        const db = await this._db;
+        const collection = await this.getTasksCollection();
 
-        return db.get(Collections.TASKS).find({ id }).value();
+        return collection.find({ id }).value();
     }
 
     async removeTask(id) {
-        const db = await this._db;
+        const collection = await this.getTasksCollection();
 
-        return db.get(Collections.TASKS).remove({ id }).write();
+        return collection.remove({ id }).write();
     }
 
     async updateTask({ id, ...other }) {
@@ -54,16 +59,17 @@ class Database {
             return undefined;
         }
 
-        let {isDone, description} = task;
+        let { isDone, description } = task;
 
         description = other.description ? other.description.trim() : description;
         isDone = other.isDone !== null && other.isDone !== undefined ?
             other.isDone :
             isDone;
 
-        await db.get(Collections.TASKS)
-            .find({ id })
-            .assign({description, isDone})
+        const collection = await this.getTasksCollection();
+
+        await collection.find({ id })
+            .assign({ description, isDone })
             .write();
 
         return this.getTaskById(id);
