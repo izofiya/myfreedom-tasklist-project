@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Upload test</title>
+    </head>
+    <body>
+        <!-- <img src="http://localhost:3002/api/tasks/1ebc60be-ab06-475a-98ca-e876da3e0b66/attachments/6978d1f1-0116-412a-b979-494b601ad6c2" /> --> -->
+        <form enctype="multipart/form-data" action="http://site.com/send" method="POST" >
+            <input type="file" multiple />
+            <button type="submit">Send file</button>
+        </form>
+    </body>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', evt => {
+            evt.preventDefault();
+            evt.stopPropagation();
+            
+            const formData = new FormData();
+            
+            const files = Array.from(document.querySelector('input').files);
+
+            files.forEach((file, index) => {
+                formData.append('file' + index, file);
+            });
+            
+            fetch('http://localhost:3002/api/tasks/1ebc60be-ab06-475a-98ca-e876da3e0b66/attachments',{
+                method: 'POST',
+                body: formData
+            }).then(console.log, console.log);
+        });
+    </script>
+</html>

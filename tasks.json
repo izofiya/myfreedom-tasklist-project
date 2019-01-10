@@ -1,54 +1,84 @@
 {
   "tasks": [
     {
-      "id": "d92f3865-ada0-4881-9ec2-dd1c8a216484",
+      "id": "1ebc60be-ab06-475a-98ca-e876da3e0b66",
       "description": "Task 1",
       "isDone": false
     },
     {
-      "id": "a78cb32c-b2e8-49ca-8032-064eb1713f22",
+      "id": "c403c97d-c72e-4b0f-9be5-995b21df166e",
       "description": "Task 2",
       "isDone": false
     },
     {
-      "id": "f9672e6d-dd2d-4cc8-8da1-65543fb21e96",
+      "id": "adf98a7b-b8f8-461a-829f-142ade0af62f",
       "description": "Task 3",
       "isDone": false
     },
     {
-      "id": "34e83991-4b26-4c2e-8de2-fb39c3ebf290",
+      "id": "03bec3d2-ae2f-40e4-83b4-1f6e1d3c5076",
       "description": "Task 4",
       "isDone": false
     },
     {
-      "id": "6805fc1a-39e9-4c7f-adf0-1211057a0ff6",
+      "id": "1ad1b584-ea69-4048-9cdc-53eb1b26cdba",
       "description": "Task 5",
       "isDone": false
     },
     {
-      "id": "cd0a8d08-7b79-45ab-a321-609934ea87be",
+      "id": "ca150073-a7ae-43fc-b1d5-76af328eb994",
       "description": "Task 6",
       "isDone": false
     },
     {
-      "id": "e2fdf38d-6d4a-4f65-8970-e9780812088d",
+      "id": "eb03c004-50db-4db5-8b8d-c297986864e1",
       "description": "Task 7",
       "isDone": false
     },
     {
-      "id": "87da15a1-ffdb-4054-837c-215f19479fb1",
+      "id": "ddf75d4f-0544-4021-b494-8d3095bec3ef",
       "description": "Task 8",
       "isDone": false
     },
     {
-      "id": "515e31e0-dfda-47a0-b7a1-0245cb387b86",
+      "id": "a50cdae1-8515-455b-abcd-750fb9182192",
       "description": "Task 9",
       "isDone": false
     },
     {
-      "id": "354f9807-96a2-4fdb-9f15-75a0ed374d11",
+      "id": "5effe62d-9576-42e1-a877-8f4877b18700",
       "description": "Task 10",
       "isDone": false
+    }
+  ],
+  "attachments": [
+    {
+      "id": "213e3904-5104-493c-a543-0d065a65578b",
+      "taskId": "1ebc60be-ab06-475a-98ca-e876da3e0b66",
+      "filename": "49cda30e3e88bf63d9532f223308c8ea",
+      "originalname": "Stas Shiray CV.pdf",
+      "mimetype": "application/pdf"
+    },
+    {
+      "id": "886ae0e9-7681-4ec1-b4cb-d1ef728aae53",
+      "taskId": "1ebc60be-ab06-475a-98ca-e876da3e0b66",
+      "filename": "b33367ca10073fafc096c9593b4acb12",
+      "originalname": "gitlab.tpondemand.net_recovery_codes.txt",
+      "mimetype": "text/plain"
+    },
+    {
+      "id": "78a11db4-21a1-48ad-9693-2f19953c16e4",
+      "taskId": "1ebc60be-ab06-475a-98ca-e876da3e0b66",
+      "filename": "93eee1ce803383b47397e017dd1221b5",
+      "originalname": "Stas Shiray CV.docx",
+      "mimetype": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    },
+    {
+      "id": "93d63a4b-aa89-40b0-ab1c-268bacfdadc1",
+      "taskId": "1ebc60be-ab06-475a-98ca-e876da3e0b66",
+      "filename": "2c25a237365cde0836dd17996841eeaf",
+      "originalname": "currencies.json",
+      "mimetype": "application/json"
     }
   ]
 }
